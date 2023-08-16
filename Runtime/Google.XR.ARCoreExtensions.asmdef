@@ -1,9 +1,11 @@
 {
     "name": "Google.XR.ARCoreExtensions",
+    "rootNamespace": "",
     "references": [
         "Unity.XR.ARFoundation",
         "Unity.XR.ARSubsystems",
-        "Unity.XR.ARCore"
+        "Unity.XR.ARCore",
+        "Unity.XR.CoreUtils"
     ],
     "includePlatforms": [
         "Android",
@@ -16,5 +18,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.arfoundation",
+            "expression": "5.0.0",
+            "define": "XROrigin"
+        }
+    ],
+    "noEngineReferences": false
 }

@@ -18,11 +18,23 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-// InternalsVisibleTo is required because Geospatial Creator needs to access the internal
-// _instance field, but we don't want it to be part of the public API.
-
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo(
-    "Google.XR.ARCoreExtensions.GeospatialCreator")]
+// The InternalsVisibleTo below lets the GeospatialCreator Runtime's .asmdef access the internals
+// of Google.XR.ARCoreExtensions.asmdef
+//
+// This is to work around Geospatial Creator's dependency on Unity.Mathematics and CesiumRuntime,
+// without forcing all ARCore to also depend on them.
+//
+// This works around the following errors
+//
+// - For the InternalsVisibleTo to must have the using systems modules name space
+// Assembly and module attributes must precede all other elements defined in a file except using
+// clauses and extern alias declarations.
+//
+// - The type or namespace name 'InternalsVisibleToAttribute'
+// could not be found (are you missing a using directive or an assembly reference?)
+using System;
+using System.Runtime.CompilerServices;
+using Unity.XR.CoreUtils;
 
 namespace Google.XR.ARCoreExtensions
 {
@@ -51,10 +63,17 @@ namespace Google.XR.ARCoreExtensions
         /// </summary>
         public ARSession Session;
 
+#if XROrigin
+        /// <summary>
+        /// AR Foundation <c><see cref="XROrigin"/></c> used by the scene.
+        /// </summary>
+        public XROrigin SessionOrigin;
+#else
         /// <summary>
         /// AR Foundation <c><see cref="ARSessionOrigin"/></c> used by the scene.
         /// </summary>
         public ARSessionOrigin SessionOrigin;
+#endif
 
         /// <summary>
         /// AR Foundation <c><see cref="ARCameraManager"/></c> used in the ARSessionOrigin.

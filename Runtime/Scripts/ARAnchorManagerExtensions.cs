@@ -161,8 +161,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new Cloud Anchor to the session origin.
+#if XROrigin
+            cloudAnchor.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             cloudAnchor.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
 
             return cloudAnchor;
         }
@@ -221,8 +226,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new Cloud Anchor to the session origin.
+#if XROrigin
+            cloudAnchor.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             cloudAnchor.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
 
             return cloudAnchor;
         }
@@ -370,8 +380,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new cloud reference point to the session origin.
+#if XROrigin
+            cloudReferencePoint.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             cloudReferencePoint.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
 
             return cloudReferencePoint;
         }
@@ -417,8 +432,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new Cloud Anchor to the session origin.
+#if XROrigin
+            cloudAnchor.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             cloudAnchor.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
 
             return cloudAnchor;
         }
@@ -505,8 +525,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new cloud reference point to the session origin.
+#if XROrigin
+            cloudReferencePoint.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             cloudReferencePoint.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
 
             return cloudReferencePoint;
         }
@@ -611,8 +636,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new Geospatial Anchor to the session origin.
+#if XROrigin
+            anchor.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             anchor.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
             return anchor;
         }
 
@@ -727,8 +757,13 @@ namespace Google.XR.ARCoreExtensions
             }
 
             // Parent the new Geospatial Terrain anchor to the session origin.
+#if XROrigin
+            anchor.transform.SetParent(
+                ARCoreExtensions._instance.SessionOrigin.TrackablesParent, false);
+#else
             anchor.transform.SetParent(
                 ARCoreExtensions._instance.SessionOrigin.trackablesParent, false);
+#endif
             return anchor;
         }
 
