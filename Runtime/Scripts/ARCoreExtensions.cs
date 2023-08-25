@@ -32,9 +32,12 @@
 //
 // - The type or namespace name 'InternalsVisibleToAttribute'
 // could not be found (are you missing a using directive or an assembly reference?)
+
 using System;
 using System.Runtime.CompilerServices;
+#if XROrigin
 using Unity.XR.CoreUtils;
+#endif
 
 namespace Google.XR.ARCoreExtensions
 {
@@ -150,8 +153,8 @@ namespace Google.XR.ARCoreExtensions
                 if (_instance == null || _instance.Session == null)
                 {
                     Debug.LogError("ARCore Extensions not found or not configured. Please " +
-                        "include an ARCore Extensions game object in your scene. " +
-                        "GameObject -> XR -> ARCore Extensions");
+                                   "include an ARCore Extensions game object in your scene. " +
+                                   "GameObject -> XR -> ARCore Extensions");
                     return IntPtr.Zero;
                 }
 
@@ -171,7 +174,7 @@ namespace Google.XR.ARCoreExtensions
             if (_instance)
             {
                 Debug.LogError("ARCore Extensions is already initialized. You may only " +
-                    "have one instance in your scene at a time.");
+                               "have one instance in your scene at a time.");
             }
 
             _instance = this;
@@ -231,7 +234,6 @@ namespace Google.XR.ARCoreExtensions
             }
 #endif // UNITY_ANDROID
 #if !UNITY_IOS || ARCORE_EXTENSIONS_IOS_SUPPORT
-
             if (Session != null && currentARCoreSessionHandle != IntPtr.Zero && !_engineTypeLogged)
             {
                 SessionApi.ReportEngineType(currentARCoreSessionHandle);
@@ -341,7 +343,6 @@ namespace Google.XR.ARCoreExtensions
 #endif
         }
 #if UNITY_ANDROID
-
         /// <summary>
         /// Unity OnValidate.
         /// </summary>
@@ -423,7 +424,6 @@ namespace Google.XR.ARCoreExtensions
             return true;
         }
 #if UNITY_ANDROID
-
         private void RequestPermission()
         {
             // Waiting for current request.
